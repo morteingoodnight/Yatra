@@ -1,0 +1,53 @@
+<%- layout('layout/basicTemplate') %>
+
+    <!-- <h1>Edit hotel Details</h1>
+    <form action="/hotels/:<%= motel._id %>?_method=PUT" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= motel.name %>"><br>
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location" value="<%= motel.location %>"><br>
+        <button>Submit</button>
+    </form>
+    <a href="/hotels/:<%= motel._id %>">Cancel</a> -->
+
+
+
+
+    <div class="row">
+        <h1 class="text-center">
+            Edit Hotel
+        </h1>
+        <div class="col-6 offset-3">
+            <form action="/hotels/<%= motel._id %>?_method=PUT" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" value="<%= motel.name %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" name="location" id="location" value="<%= motel.location %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image address</label>
+                    <input class="form-control" type="text" name="image" id="image" value="<%= motel.image %>">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Hotel Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">₹</span>
+                        <input type="text" class="form-control" name="price" id="price" value="<%= motel.price %>"
+                            aria-label="price" aria-describedby="price-label">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" name="description"
+                        id="description"><%= motel.description %></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Submit</button>
+                </div>
+            </form>
+            <a href="/hotels/<%= motel._id %>">Cancel</a>
+        </div>
+    </div>

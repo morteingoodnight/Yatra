@@ -1,0 +1,58 @@
+module.exports.descriptors = [
+    "Golden Sands",
+    "Silver Lake",
+    "Grand Plaza",
+    "Royal Oasis",
+    "Palm Paradise",
+    "Sunset View",
+    "Moonlight Gardens",
+    "Crystal Heights",
+    "Ocean Breeze",
+    "Mountain Retreat",
+    "Serenity Valley",
+    "Harbor Haven",
+    "Whispering Pines",
+    "Lakeside Manor",
+    "Majestic Towers",
+    "Emerald Palace",
+    "Enchanted Gardens",
+    "Regal Court",
+    "Tranquil Springs",
+    "Harmony Lodge",
+    "Coral Bay",
+    "Sunrise Inn",
+    "Mystic Valley",
+    "Azure Skies",
+    "Harvest Moon"
+]
+
+module.exports.places = [
+    "Luxury",
+    "Boutique",
+    "Elegant",
+    "Charming",
+    "Modern",
+    "Classic",
+    "Exquisite",
+    "Resort",
+    "Seaside",
+    "Urban",
+    "Historic",
+    "Riverside",
+    "Tropical",
+    "Quaint",
+    "Cosy",
+    "Grand",
+    "Tranquil",
+    "Spectacular",
+    "Opulent",
+    "Enchanting",
+    "Picturesque",
+    "Exclusive",
+    "Stylish",
+    "Magical",
+    "Idyllic"
+]
+
+
+

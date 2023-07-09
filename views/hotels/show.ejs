@@ -1,0 +1,28 @@
+<%- layout('layout/basicTemplate') %>
+
+    <h1>List of all hotels</h1>
+    <% for(let hot of list) {%>
+        <div class="card" mb-3>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%= hot.image %>" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= hot.name %>
+                        </h5>
+                        <p class="card-text">
+                            <%= hot.description %>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%= hot.location %>
+                            </small>
+                        </p>
+                        <a href="/hotels/<%= hot._id %>" class="btn btn-primary">View <%= hot.name %></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
