@@ -5,7 +5,7 @@
             New Hotel
         </h1>
         <div class="col-6 offset-3">
-            <form action="/hotels" method="post" novalidate class="form-validate">
+            <form action="/hotels" method="post" novalidate class="form-validate" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" id="name" required>
@@ -20,13 +20,7 @@
                         Looks good!
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="image">Image address</label>
-                    <input class="form-control" type="text" name="image" id="image" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
+
                 <div class="mb-3">
                     <label for="price" class="form-label">Hotel Price</label>
                     <div class="input-group">
@@ -44,6 +38,10 @@
                     <div class="valid-feedback">
                         Looks good!
                     </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Add Image...</label>
+                    <input class="form-control" type="file" id="formFile" name="image" multiple>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-success">Submit</button>

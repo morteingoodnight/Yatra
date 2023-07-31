@@ -18,7 +18,7 @@
             Edit Hotel
         </h1>
         <div class="col-6 offset-3">
-            <form action="/hotels/<%= motel._id %>?_method=PUT" method="POST">
+            <form action="/hotels/<%= motel._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" id="name" value="<%= motel.name %>">
@@ -27,10 +27,7 @@
                     <label class="form-label" for="location">Location</label>
                     <input class="form-control" type="text" name="location" id="location" value="<%= motel.location %>">
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="image">Image address</label>
-                    <input class="form-control" type="text" name="image" id="image" value="<%= motel.image %>">
-                </div>
+
                 <div class="mb-3">
                     <label for="price" class="form-label">Hotel Price</label>
                     <div class="input-group">
@@ -40,10 +37,31 @@
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label for="formFile" class="form-label">Add Image...</label>
+                    <input class="form-control" type="file" id="formFile" name="image" multiple>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" type="text" name="description"
                         id="description"><%= motel.description %></textarea>
                 </div>
+
+                <h5> Delete Images </h5>
+                <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
+                    <% motel.image.forEach((image, i)=> { %>
+                        <div class="col">
+                            <div class="card">
+                                <img class="card-img" src="<%= image.thumbnail %>" alt="">
+                                <div class="card-img-overlay text-end pt-1 pe-2">
+                                    <label class="visually-hidden" for="image-<%= i %>">Delete Image</label>
+                                    <input class="form-check-input" type="checkbox" name="deleteImages[]"
+                                        value="<%= image.filename %>" id="image-<%= i %>">
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+
                 <div class="mb-3">
                     <button class="btn btn-success">Submit</button>
                 </div>

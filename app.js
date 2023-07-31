@@ -1,3 +1,8 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+//console.log(process.env.secret)
+
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -14,6 +19,7 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')
 const localStratergy = require('passport-local')
+const mongo_sanitize = require('express-mongo-sanitize')
 
 const { hotelSchema, reviewSchema } = require('./schemas')
 
@@ -47,6 +53,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session(sessionConfig))
 app.use(flash())
+app.use(mongo_sanitize());
+
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -69,28 +77,6 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views'))
 
 
-const validateReview = (res, req, next) => {
-
-    const { error } = reviewSchema.validate(req.body)
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new appError(400, msg)
-    }
-    else {
-        next()
-    }
-}
-
-const validateHotel = (req, res, next) => {
-    const { error } = hotelSchema.validate(req.body)
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new appError(400, msg)
-    }
-    else {
-        next()
-    }
-}
 
 app.use('/hotels', hotelRoutes)
 app.use('/hotels/:id/reviews', reviewRoutes)

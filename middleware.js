@@ -1,6 +1,7 @@
 const { hotelSchema, reviewSchema } = require('./schemas')
 const Kat = require('./models/hotel')
 const appError = require('./utils/appError')
+const Review = require('./models/reviewSchema')
 
 
 module.exports.isLoggedIn = (req, res, next) => {
@@ -30,6 +31,15 @@ module.exports.isAuthor = async (req, res, next) => {
     next()
 }
 
+module.exports.isReviewAuthor = async (req, res, next) => {
+    const { id, reviewId } = req.params
+    const review = await Review.findById(reviewId)
+    if (!review.author.equals(req.user._id)) {
+        req.flash('error', "You do not have permission to do this task")
+        return res.redirect(`/hotels/${id}`)
+    }
+    next()
+}
 
 module.exports.validateHotel = (req, res, next) => {
     const { error } = hotelSchema.validate(req.body)

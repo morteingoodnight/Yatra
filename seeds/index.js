@@ -17,15 +17,28 @@ seedDB = async () => {
     await Kat.deleteMany({});
     // c = new Kat({ name: "Taj", location: "Mumbai" });
     // c.save()
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 200; i++) {
         const random150 = Math.floor(Math.random() * 150)
         const rando = Math.floor(Math.random() * 5000) + 30
         c = new Kat({
             author: '64a4f2f76e5b7a239c5885a3',
             name: `${kamal(places)} ${kamal(descriptors)} `, location: `${city[random150].city}, ${city[random150].admin_name}`,
-            image: "https://images.unsplash.com/photo-1619631428091-1eaa03c3bdf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80",
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            price: rando
+            price: rando,
+            image: [
+                {
+                    url: 'https://res.cloudinary.com/dsgocdrme/image/upload/v1690522252/hotel/pfkuircwgujasdj3xhii.jpg',
+                    filename: 'hotel/pfkuircwgujasdj3xhii',
+                },
+                {
+                    url: 'https://res.cloudinary.com/dsgocdrme/image/upload/v1690522259/hotel/lu8suqcci4tzsoydgysf.jpg',
+                    filename: 'hotel/lu8suqcci4tzsoydgysf',
+                }
+            ],
+            geometry: {
+                type: "Point",
+                coordinates: [city[random150].lng, city[random150].lat]
+            }
         })
         c.save()
     }

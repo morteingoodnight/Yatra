@@ -7,8 +7,9 @@ module.exports.hotelSchema = joi.object({
     name: joi.string().required(),
     price: joi.number().required().min(0),
     description: joi.string().required(),
-    image: joi.string().required(),
-    location: joi.string().required()
+    //image: joi.string().required(),
+    location: joi.string().required(),
+    deleteImages: joi.array()
 })
 
 module.exports.reviewSchema = joi.object({
