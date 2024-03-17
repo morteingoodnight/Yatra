@@ -1,2 +1,3 @@
 # yatra.com  
-From Kashmir to Kanyakumari(check spelling)
+A Web application with basic CRUD application, authentication and authorization.
+
