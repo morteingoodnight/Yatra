@@ -20,14 +20,17 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const localStratergy = require('passport-local')
 const mongo_sanitize = require('express-mongo-sanitize')
+const MongoStore = require('connect-mongo')(session);
 
 const { hotelSchema, reviewSchema } = require('./schemas')
 
 const Kat = require('./models/hotel')
 const Review = require('./models/reviewSchema')
-const User = require('./models/user')
-
-mongoose.connect('mongodb://127.0.0.1:27017/hotel', { useNewUrlParser: true })
+const User = require('./models/user');
+const { func } = require('joi');
+const dbURL = 'mongodb://127.0.0.1:27017/hotel'
+//dbURL
+mongoose.connect(dbURL, { useNewUrlParser: true })
     .then(() => {
         console.log('connected to database')
     })
@@ -36,7 +39,18 @@ mongoose.connect('mongodb://127.0.0.1:27017/hotel', { useNewUrlParser: true })
         console.log(e)
     })
 
+const store = new MongoStore({
+    url: dbURL,
+    secret: 'itShouldBeMoreComicallyAccurate',
+    touchAfter: 24 * 60 * 60
+});
+
+store.on("error", function (e) {
+    console.log("Session store error", e);
+})
+
 const sessionConfig = {
+    store,
     secret: 'itShouldBeMoreComicallyAccurate',
     resave: false,
     saveUninitialized: true,
